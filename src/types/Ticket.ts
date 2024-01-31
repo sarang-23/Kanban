@@ -1,4 +1,4 @@
-export interface Ticket {
+export interface Ticket extends Record<string, any> {
   id: string;
   title: string;
   tag: string[];

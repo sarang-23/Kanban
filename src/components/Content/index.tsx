@@ -9,7 +9,6 @@ const Content: React.FC = () => {
 
   const columns = groupBy(appState.groupBy, appState.tickets);
 
-  console.log(columns);
   return (
     <main className="content-wrapper">
       {columns ? (
