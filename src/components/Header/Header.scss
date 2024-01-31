@@ -36,6 +36,9 @@
       display: flex;
       justify-content: space-between;
       color: #a5a5a7;
+      select {
+        width: 80px;
+      }
     }
   }
 }
