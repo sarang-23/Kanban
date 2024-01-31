@@ -35,12 +35,14 @@ const appReducer = (state: AppState, action: any) => {
       };
     }
     case ACTIONS.UPDATE_GROUP_BY: {
+      localStorage.setItem("groupBy", action.payload);
       return {
         ...state,
         groupBy: action.payload,
       };
     }
     case ACTIONS.UPDATE_SORT_BY: {
+      localStorage.setItem("sortBy", action.payload);
       return {
         ...state,
         sortBy: action.payload,
@@ -68,7 +70,17 @@ interface AppContextProps {
 }
 
 const AppContext: React.FC<AppContextProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  let init = initialState;
+
+  //Get View Details from localStorage if present, else set to defaults.
+  init = {
+    ...initialState,
+    groupBy: localStorage.getItem("groupBy") || GROUP_BY.STATUS,
+    sortBy: localStorage.getItem("sortBy") || SORT_BY.PRIORITY,
+  };
+
+  const [state, dispatch] = useReducer(appReducer, init);
+
   return (
     <AppStateContext.Provider value={state}>
       <AppDispatchContext.Provider value={dispatch}>
