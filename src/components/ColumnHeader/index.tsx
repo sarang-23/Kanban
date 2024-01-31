@@ -1,4 +1,7 @@
 import React from "react";
+import { IoIosMore, IoMdAdd } from "react-icons/io";
+import "./ColumnHeader.scss";
+import useColumnDetails from "../../hooks/useColumnDetails";
 
 interface ColumnHeaderProps {
   name: string;
@@ -6,14 +9,18 @@ interface ColumnHeaderProps {
 }
 
 const ColumnHeader: React.FC<ColumnHeaderProps> = ({ name, ticketCount }) => {
-  const getIcon = (name: string) => {
-    return <div>I</div>;
-  };
+  const { title, icon } = useColumnDetails(name);
   return (
     <div className="column-header">
-      <span className="column-icon">{getIcon(name)}</span>
-      <span className="column-name">{name}</span>
-      <span className="ticket-count">{ticketCount}</span>
+      <div className="left">
+        {icon}
+        <span className="column-name">{title}</span>
+        <span className="ticket-count">{ticketCount}</span>
+      </div>
+      <div className="right">
+        <IoIosMore style={{ marginRight: 10, cursor: "pointer" }} />
+        <IoMdAdd style={{ cursor: "pointer" }} />
+      </div>
     </div>
   );
 };

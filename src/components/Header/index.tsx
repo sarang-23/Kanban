@@ -5,12 +5,17 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { GoMultiSelect } from "react-icons/go";
-import { ACTIONS, AppDispatchContext } from "../../context/AppContext";
+import {
+  ACTIONS,
+  AppDispatchContext,
+  AppStateContext,
+} from "../../context/AppContext";
 import { GROUP_BY, SORT_BY } from "../../utils/constants";
 
 const Header = () => {
   const [show, setShow] = useState(false);
   const dispatch = useContext(AppDispatchContext);
+  const { groupBy, sortBy } = useContext(AppStateContext);
 
   return (
     <div className="kanban-header">
@@ -24,12 +29,14 @@ const Header = () => {
           <div className="display-option">
             <span>Grouping</span>
             <select
-              onChange={(e) =>
+              value={groupBy}
+              onChange={(e) => {
                 dispatch({
                   type: ACTIONS.UPDATE_GROUP_BY,
                   payload: e.target.value,
-                })
-              }
+                });
+                setShow((p) => !p);
+              }}
             >
               <option value={GROUP_BY.STATUS}>Status</option>
               <option value={GROUP_BY.USER}>User</option>
@@ -40,12 +47,14 @@ const Header = () => {
           <div className="display-option">
             <span>Ordering</span>
             <select
-              onChange={(e) =>
+              value={sortBy}
+              onChange={(e) => {
                 dispatch({
                   type: ACTIONS.UPDATE_SORT_BY,
                   payload: e.target.value,
-                })
-              }
+                });
+                setShow((p) => !p);
+              }}
             >
               <option value={SORT_BY.PRIORITY}>Priority</option>
               <option value={SORT_BY.TITLE}>Title</option>

@@ -5,11 +5,3 @@ export interface Ticket {
   userId: string;
   status: string;
 }
-
-enum status {
-  TODO = "Todo",
-  IN_PROGRESS = "In Progress",
-  BACKLOG = "Backlog",
-  DONE = "Done",
-  CANCELED = "Canceled",
-}

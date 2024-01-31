@@ -11,7 +11,7 @@ import {
   AppStateContext,
 } from "../../context/AppContext";
 import "./Avatar.scss";
-import { getRandomHex } from "../../utils/helpers";
+import { getRandomHex, getUser } from "../../utils/helpers";
 
 type AvatarProps = {
   userId: string;
@@ -20,7 +20,7 @@ type AvatarProps = {
 const Avatar: React.FC<AvatarProps> = ({ userId }) => {
   const { users, userProfileColor } = useContext(AppStateContext);
 
-  const currentUser = users?.filter((u) => u.id === userId)[0];
+  const currentUser = getUser(users!, userId);
   const dispatch = useContext(AppDispatchContext);
 
   const [backgroundColor, setBackgroundColor] = useState("");

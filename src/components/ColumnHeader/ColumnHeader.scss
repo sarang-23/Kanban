@@ -1,0 +1,16 @@
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .left {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    .column-name {
+      margin: 0 20px;
+    }
+    .ticket-count {
+      color: #9e9ba3;
+    }
+  }
+}
