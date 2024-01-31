@@ -7,6 +7,7 @@ import {
 import Header from "./Header";
 import Content from "./Content";
 import "./KanbanBoard.scss";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const KanbanBoard = () => {
   const dispatch = useContext(AppDispatchContext);
@@ -32,7 +33,13 @@ const KanbanBoard = () => {
   return (
     <div className="kanban-board-app">
       <Header />
-      {tickets && <Content />}
+      {tickets ? (
+        <Content />
+      ) : (
+        <div className="spin-wrapper">
+          <AiOutlineLoading3Quarters className="spinner" />
+        </div>
+      )}
     </div>
   );
 };

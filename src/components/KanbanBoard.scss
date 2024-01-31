@@ -1,4 +1,22 @@
 .kanban-board-app {
   min-height: 100vh;
   background-color: #f4f5f8;
+  .spin-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 200px;
+    .spinner {
+      animation: spinner infinite 1s linear;
+    }
+  }
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
