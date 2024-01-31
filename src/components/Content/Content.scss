@@ -1,0 +1,11 @@
+.content-wrapper {
+  background-color: #f4f5f8;
+  .column-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 40px;
+    padding: 0 40px;
+    flex-wrap: wrap;
+  }
+}

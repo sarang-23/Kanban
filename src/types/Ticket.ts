@@ -1,9 +1,9 @@
 export interface Ticket {
   id: string;
   title: string;
-  tags: string[];
+  tag: string[];
   userId: string;
-  status: status;
+  status: string;
 }
 
 enum status {

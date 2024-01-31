@@ -1,0 +1,16 @@
+.tag {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  .dot {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #a3a3a3;
+    margin-right: 10px;
+  }
+}

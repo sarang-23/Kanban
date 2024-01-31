@@ -8,6 +8,7 @@ interface AppState {
   tickets?: Ticket[];
   groupBy: string;
   sortBy: string;
+  userProfileColor: any;
 }
 
 const initialState: AppState = {
@@ -15,12 +16,14 @@ const initialState: AppState = {
   tickets: undefined,
   groupBy: GROUP_BY.STATUS,
   sortBy: SORT_BY.PRIORITY,
+  userProfileColor: {},
 };
 
 export const ACTIONS = {
   SET_DATA: "SET_DATA",
   UPDATE_SORT_BY: "UPDATE_SORT_BY",
   UPDATE_GROUP_BY: "UPDATE_GROUP_BY",
+  SET_USER_PROFILE_COLOR: "SET_USER_PROFILE_COLOR",
 };
 
 const appReducer = (state: AppState, action: any) => {
@@ -41,6 +44,15 @@ const appReducer = (state: AppState, action: any) => {
       return {
         ...state,
         sortBy: action.payload,
+      };
+    }
+    case ACTIONS.SET_USER_PROFILE_COLOR: {
+      return {
+        ...state,
+        userProfileColor: {
+          ...state.userProfileColor,
+          ...action.payload,
+        },
       };
     }
     default:
